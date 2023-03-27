@@ -1,0 +1,204 @@
+openapi: 3.0.1
+info:
+  title: Blog Api
+  description: 'This is a Blog module. You can find out more about Blog at [http://blog.io](http://blog.io) or on [www.blog.gov.in, #blog](http://swagger.io/irc/).'
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Rural Services
+  url: http://swagger.io
+servers:
+  - url: https://localhost:8080/blogs/api/v1
+  - url: http://localhost:8080/blogs/api/v1
+tags:
+  - name: Blog API
+    description: Everything about Blogs
+    externalDocs:
+      description: Find out more!
+      url: http://swagger.io
+paths:
+  /blogcategory:
+    get:
+      tags:
+        - Blog category
+      summary: Getting blog category details
+      responses:
+        '200':
+          description: A list of all blog category details
+          content:
+            applicantion/json:
+              schema:
+                $ref: '#/components/schemas/BlogCategory'
+        '201':
+          description: Successful
+          content: {}
+        '400':
+          description: Bad request input
+          content: {}
+        '404':
+          description: Data not found
+          content: {}
+        '500':
+          description: Invalid input
+          content: {}
+        '502':
+          description: Bad Gatway
+      x-codegen-request-body-name: body  
+      
+    post:
+      tags:
+        - Blog category
+      summary: Adding a new Blog category
+      requestBody:
+        description: Blog category details that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlogCategory'
+        required: true
+      responses:
+        '201':
+          description: Successful
+          content: {}      
+        '400':
+          description: Bad request input
+          content: {}
+        '404':
+          description: Data not found
+          content: {}
+        '500':
+          description: Invalid input
+          content: {}          
+        '502':
+          description: Bad Gatway
+          content: {}               
+      x-codegen-request-body-name: body
+      
+  /blogcategory/{blogcategoryId}:
+    get:
+      tags:
+        - Blog category
+      parameters:
+      - name: blogcategoryId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A list of all blog category details
+          content:
+            applicantion/json:
+              schema:
+                $ref: '#/components/schemas/BlogCategory'
+        '201':
+          description: Successful
+          content: {}
+        '400':
+          description: Bad request input
+          content: {}
+        '404':
+          description: Data not found
+          content: {}
+        '500':
+          description: Invalid input
+          content: {}
+        '502':
+          description: Bad Gatway
+      x-codegen-request-body-name: body  
+      
+    put:
+      tags:
+        - Blog category
+      summary: Updating an existing Blog category
+      parameters:
+        - name: blogcategoryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Blog category details that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlogCategory'
+        required: true
+      responses:
+        '201':
+          description: Successful
+          content: {}      
+        '400':
+          description: Bad request input
+          content: {}
+        '404':
+          description: Data not found
+          content: {}
+        '500':
+          description: Invalid input
+          content: {}          
+        '502':
+          description: Bad Gatway
+          content: {}               
+      x-codegen-request-body-name: body
+      
+    delete:
+      tags:
+        - Blog category
+      summary: Delete a Blog category
+      parameters:
+        - name: blogcategoryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          description: Successful
+          content: {}      
+        '400':
+          description: Bad request input
+          content: {}
+        '404':
+          description: Data not found
+          content: {}
+        '500':
+          description: Invalid input
+          content: {}          
+        '502':
+          description: Bad Gatway
+          content: {}               
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    BlogCategory:
+      type: object
+      required:
+       - blogcategoryId
+       - BlogCategoryName
+       - SeoTitle
+       - SeoMetaDescription
+      properties:
+        blogcategoryId:
+          type: integer
+        BlogCategoryName:
+          type: string
+          maxLength: 120
+        SeoTitle:
+          type: string
+          maxLength: 200
+        SeoMetaDescription:
+          type: string
+          maxLength: 200
+        Status:
+          type: string
+          maxLength: 6
+  
+        
+          
+        

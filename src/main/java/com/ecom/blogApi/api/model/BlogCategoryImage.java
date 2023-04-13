@@ -1,0 +1,132 @@
+package com.ecom.blogApi.api.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+
+/**
+ * BlogCategoryImage
+ */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-13T13:14:56.410513400+05:30[Asia/Calcutta]")
+
+public class BlogCategoryImage   {
+  @JsonProperty("blogCategoryImageId")
+  private Integer blogCategoryImageId;
+
+  @JsonProperty("categoryImage")
+  private String categoryImage;
+
+  @JsonProperty("categoryImageDownloadUrl")
+  private String categoryImageDownloadUrl;
+
+  public BlogCategoryImage blogCategoryImageId(Integer blogCategoryImageId) {
+    this.blogCategoryImageId = blogCategoryImageId;
+    return this;
+  }
+
+  /**
+   * Get blogCategoryImageId
+   * @return blogCategoryImageId
+  */
+  @ApiModelProperty(value = "")
+
+
+  public Integer getBlogCategoryImageId() {
+    return blogCategoryImageId;
+  }
+
+  public void setBlogCategoryImageId(Integer blogCategoryImageId) {
+    this.blogCategoryImageId = blogCategoryImageId;
+  }
+
+  public BlogCategoryImage categoryImage(String categoryImage) {
+    this.categoryImage = categoryImage;
+    return this;
+  }
+
+  /**
+   * Get categoryImage
+   * @return categoryImage
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+
+  public String getCategoryImage() {
+    return categoryImage;
+  }
+
+  public void setCategoryImage(String categoryImage) {
+    this.categoryImage = categoryImage;
+  }
+
+  public BlogCategoryImage categoryImageDownloadUrl(String categoryImageDownloadUrl) {
+    this.categoryImageDownloadUrl = categoryImageDownloadUrl;
+    return this;
+  }
+
+  /**
+   * Get categoryImageDownloadUrl
+   * @return categoryImageDownloadUrl
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+
+  public String getCategoryImageDownloadUrl() {
+    return categoryImageDownloadUrl;
+  }
+
+  public void setCategoryImageDownloadUrl(String categoryImageDownloadUrl) {
+    this.categoryImageDownloadUrl = categoryImageDownloadUrl;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    BlogCategoryImage blogCategoryImage = (BlogCategoryImage) o;
+    return Objects.equals(this.blogCategoryImageId, blogCategoryImage.blogCategoryImageId) &&
+        Objects.equals(this.categoryImage, blogCategoryImage.categoryImage) &&
+        Objects.equals(this.categoryImageDownloadUrl, blogCategoryImage.categoryImageDownloadUrl);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(blogCategoryImageId, categoryImage, categoryImageDownloadUrl);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class BlogCategoryImage {\n");
+    
+    sb.append("    blogCategoryImageId: ").append(toIndentedString(blogCategoryImageId)).append("\n");
+    sb.append("    categoryImage: ").append(toIndentedString(categoryImage)).append("\n");
+    sb.append("    categoryImageDownloadUrl: ").append(toIndentedString(categoryImageDownloadUrl)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

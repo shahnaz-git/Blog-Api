@@ -198,7 +198,18 @@ components:
         Status:
           type: string
           maxLength: 6
-  
-        
+        categoryImage:
+          $ref: '#/components/schemas/BlogCategoryImage'
+    BlogCategoryImage:
+      type: object
+      required:
+       - categoryImage
+       - categoryImageDownloadUrl
+      properties:
+        blogCategoryImageId:
+          type: integer
+        categoryImage:
+          type : string
+        categoryImageDownloadUrl:
+          type : string
           
-        

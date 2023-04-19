@@ -12,14 +12,14 @@ import javax.validation.constraints.*;
 /**
  * BlogCategoryImage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-13T13:14:56.410513400+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-19T17:54:41.173460500+05:30[Asia/Calcutta]")
 
 public class BlogCategoryImage   {
   @JsonProperty("blogCategoryImageId")
   private Integer blogCategoryImageId;
 
-  @JsonProperty("categoryImage")
-  private String categoryImage;
+  @JsonProperty("categoryImageName")
+  private String categoryImageName;
 
   @JsonProperty("categoryImageDownloadUrl")
   private String categoryImageDownloadUrl;
@@ -44,25 +44,24 @@ public class BlogCategoryImage   {
     this.blogCategoryImageId = blogCategoryImageId;
   }
 
-  public BlogCategoryImage categoryImage(String categoryImage) {
-    this.categoryImage = categoryImage;
+  public BlogCategoryImage categoryImageName(String categoryImageName) {
+    this.categoryImageName = categoryImageName;
     return this;
   }
 
   /**
-   * Get categoryImage
-   * @return categoryImage
+   * Get categoryImageName
+   * @return categoryImageName
   */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
+  @ApiModelProperty(value = "")
 
 
-  public String getCategoryImage() {
-    return categoryImage;
+  public String getCategoryImageName() {
+    return categoryImageName;
   }
 
-  public void setCategoryImage(String categoryImage) {
-    this.categoryImage = categoryImage;
+  public void setCategoryImageName(String categoryImageName) {
+    this.categoryImageName = categoryImageName;
   }
 
   public BlogCategoryImage categoryImageDownloadUrl(String categoryImageDownloadUrl) {
@@ -97,13 +96,13 @@ public class BlogCategoryImage   {
     }
     BlogCategoryImage blogCategoryImage = (BlogCategoryImage) o;
     return Objects.equals(this.blogCategoryImageId, blogCategoryImage.blogCategoryImageId) &&
-        Objects.equals(this.categoryImage, blogCategoryImage.categoryImage) &&
+        Objects.equals(this.categoryImageName, blogCategoryImage.categoryImageName) &&
         Objects.equals(this.categoryImageDownloadUrl, blogCategoryImage.categoryImageDownloadUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(blogCategoryImageId, categoryImage, categoryImageDownloadUrl);
+    return Objects.hash(blogCategoryImageId, categoryImageName, categoryImageDownloadUrl);
   }
 
   @Override
@@ -112,7 +111,7 @@ public class BlogCategoryImage   {
     sb.append("class BlogCategoryImage {\n");
     
     sb.append("    blogCategoryImageId: ").append(toIndentedString(blogCategoryImageId)).append("\n");
-    sb.append("    categoryImage: ").append(toIndentedString(categoryImage)).append("\n");
+    sb.append("    categoryImageName: ").append(toIndentedString(categoryImageName)).append("\n");
     sb.append("    categoryImageDownloadUrl: ").append(toIndentedString(categoryImageDownloadUrl)).append("\n");
     sb.append("}");
     return sb.toString();

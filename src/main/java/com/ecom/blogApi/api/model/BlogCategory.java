@@ -13,22 +13,22 @@ import javax.validation.constraints.*;
 /**
  * BlogCategory
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-13T13:14:56.410513400+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-19T17:54:41.173460500+05:30[Asia/Calcutta]")
 
 public class BlogCategory   {
   @JsonProperty("blogcategoryId")
   private Integer blogcategoryId;
 
-  @JsonProperty("BlogCategoryName")
+  @JsonProperty("blogCategoryName")
   private String blogCategoryName;
 
-  @JsonProperty("SeoTitle")
+  @JsonProperty("seoTitle")
   private String seoTitle;
 
-  @JsonProperty("SeoMetaDescription")
+  @JsonProperty("seoMetaDescription")
   private String seoMetaDescription;
 
-  @JsonProperty("Status")
+  @JsonProperty("status")
   private String status;
 
   @JsonProperty("categoryImage")

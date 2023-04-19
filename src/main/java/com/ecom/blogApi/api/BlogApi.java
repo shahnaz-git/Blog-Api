@@ -5,7 +5,7 @@
  */
 package com.ecom.blogApi.api;
 
-import com.ecom.blogApi.api.model.BlogCategory;
+import com.ecom.blogApi.api.model.Blog;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,71 +30,71 @@ import java.util.Optional;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-19T17:54:41.173460500+05:30[Asia/Calcutta]")
 
 @Validated
-@Api(value = "blogcategory", description = "the blogcategory API")
-public interface BlogcategoryApi {
+@Api(value = "blog", description = "the blog API")
+public interface BlogApi {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
     /**
-     * DELETE /blogcategory/{blogcategoryId} : Delete a Blog category
+     * DELETE /blog/{blogId} : Delete a Blog
      *
-     * @param blogcategoryId  (required)
+     * @param blogId  (required)
      * @return Successful (status code 201)
      *         or Bad request input (status code 400)
      *         or Data not found (status code 404)
      *         or Invalid input (status code 500)
      *         or Bad Gatway (status code 502)
      */
-    @ApiOperation(value = "Delete a Blog category", nickname = "blogcategoryBlogcategoryIdDelete", notes = "", tags={ "Blog category", })
+    @ApiOperation(value = "Delete a Blog", nickname = "blogBlogIdDelete", notes = "", tags={ "Blog", })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Successful"),
         @ApiResponse(code = 400, message = "Bad request input"),
         @ApiResponse(code = 404, message = "Data not found"),
         @ApiResponse(code = 500, message = "Invalid input"),
         @ApiResponse(code = 502, message = "Bad Gatway") })
-    @RequestMapping(value = "/blogcategory/{blogcategoryId}",
+    @RequestMapping(value = "/blog/{blogId}",
         method = RequestMethod.DELETE)
-    default ResponseEntity<Void> _blogcategoryBlogcategoryIdDelete(@ApiParam(value = "",required=true) @PathVariable("blogcategoryId") Integer blogcategoryId) {
-        return blogcategoryBlogcategoryIdDelete(blogcategoryId);
+    default ResponseEntity<Void> _blogBlogIdDelete(@ApiParam(value = "",required=true) @PathVariable("blogId") Integer blogId) {
+        return blogBlogIdDelete(blogId);
     }
 
     // Override this method
-    default  ResponseEntity<Void> blogcategoryBlogcategoryIdDelete(Integer blogcategoryId) {
+    default  ResponseEntity<Void> blogBlogIdDelete(Integer blogId) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
 
     /**
-     * GET /blogcategory/{blogcategoryId}
+     * GET /blog/{blogId}
      *
-     * @param blogcategoryId  (required)
-     * @return A list of all blog category details (status code 200)
+     * @param blogId  (required)
+     * @return A list of all blog details (status code 200)
      *         or Successful (status code 201)
      *         or Bad request input (status code 400)
      *         or Data not found (status code 404)
      *         or Invalid input (status code 500)
      *         or Bad Gatway (status code 502)
      */
-    @ApiOperation(value = "", nickname = "blogcategoryBlogcategoryIdGet", notes = "", response = BlogCategory.class, tags={ "Blog category", })
+    @ApiOperation(value = "", nickname = "blogBlogIdGet", notes = "", response = Blog.class, tags={ "Blog", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "A list of all blog category details", response = BlogCategory.class),
+        @ApiResponse(code = 200, message = "A list of all blog details", response = Blog.class),
         @ApiResponse(code = 201, message = "Successful"),
         @ApiResponse(code = 400, message = "Bad request input"),
         @ApiResponse(code = 404, message = "Data not found"),
         @ApiResponse(code = 500, message = "Invalid input"),
         @ApiResponse(code = 502, message = "Bad Gatway") })
-    @RequestMapping(value = "/blogcategory/{blogcategoryId}",
+    @RequestMapping(value = "/blog/{blogId}",
         produces = { "applicantion/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<BlogCategory> _blogcategoryBlogcategoryIdGet(@ApiParam(value = "",required=true) @PathVariable("blogcategoryId") Integer blogcategoryId) {
-        return blogcategoryBlogcategoryIdGet(blogcategoryId);
+    default ResponseEntity<Blog> _blogBlogIdGet(@ApiParam(value = "",required=true) @PathVariable("blogId") Integer blogId) {
+        return blogBlogIdGet(blogId);
     }
 
     // Override this method
-    default  ResponseEntity<BlogCategory> blogcategoryBlogcategoryIdGet(Integer blogcategoryId) {
+    default  ResponseEntity<Blog> blogBlogIdGet(Integer blogId) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf(""))) {
@@ -110,64 +110,64 @@ public interface BlogcategoryApi {
 
 
     /**
-     * PUT /blogcategory/{blogcategoryId} : Updating an existing Blog category
+     * PUT /blog/{blogId} : Updating an existing Blog
      *
-     * @param blogcategoryId  (required)
-     * @param body Blog category details that needs to be update (required)
+     * @param blogId  (required)
+     * @param body Blog details that needs to be update (required)
      * @return Successful (status code 201)
      *         or Bad request input (status code 400)
      *         or Data not found (status code 404)
      *         or Invalid input (status code 500)
      *         or Bad Gatway (status code 502)
      */
-    @ApiOperation(value = "Updating an existing Blog category", nickname = "blogcategoryBlogcategoryIdPut", notes = "", tags={ "Blog category", })
+    @ApiOperation(value = "Updating an existing Blog", nickname = "blogBlogIdPut", notes = "", tags={ "Blog", })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Successful"),
         @ApiResponse(code = 400, message = "Bad request input"),
         @ApiResponse(code = 404, message = "Data not found"),
         @ApiResponse(code = 500, message = "Invalid input"),
         @ApiResponse(code = 502, message = "Bad Gatway") })
-    @RequestMapping(value = "/blogcategory/{blogcategoryId}",
+    @RequestMapping(value = "/blog/{blogId}",
         consumes = { "application/json" },
         method = RequestMethod.PUT)
-    default ResponseEntity<Void> _blogcategoryBlogcategoryIdPut(@ApiParam(value = "",required=true) @PathVariable("blogcategoryId") Integer blogcategoryId,@ApiParam(value = "Blog category details that needs to be update" ,required=true )  @Valid @RequestBody BlogCategory body) {
-        return blogcategoryBlogcategoryIdPut(blogcategoryId, body);
+    default ResponseEntity<Void> _blogBlogIdPut(@ApiParam(value = "",required=true) @PathVariable("blogId") Integer blogId,@ApiParam(value = "Blog details that needs to be update" ,required=true )  @Valid @RequestBody Blog body) {
+        return blogBlogIdPut(blogId, body);
     }
 
     // Override this method
-    default  ResponseEntity<Void> blogcategoryBlogcategoryIdPut(Integer blogcategoryId, BlogCategory body) {
+    default  ResponseEntity<Void> blogBlogIdPut(Integer blogId, Blog body) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
 
     /**
-     * GET /blogcategory : Getting blog category details
+     * GET /blog : Getting blog details
      *
-     * @return A list of all blog category details (status code 200)
+     * @return A list of all blog details (status code 200)
      *         or Successful (status code 201)
      *         or Bad request input (status code 400)
      *         or Data not found (status code 404)
      *         or Invalid input (status code 500)
      *         or Bad Gatway (status code 502)
      */
-    @ApiOperation(value = "Getting blog category details", nickname = "blogcategoryGet", notes = "", response = BlogCategory.class, tags={ "Blog category", })
+    @ApiOperation(value = "Getting blog details", nickname = "blogGet", notes = "", response = Blog.class, tags={ "Blog", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "A list of all blog category details", response = BlogCategory.class),
+        @ApiResponse(code = 200, message = "A list of all blog details", response = Blog.class),
         @ApiResponse(code = 201, message = "Successful"),
         @ApiResponse(code = 400, message = "Bad request input"),
         @ApiResponse(code = 404, message = "Data not found"),
         @ApiResponse(code = 500, message = "Invalid input"),
         @ApiResponse(code = 502, message = "Bad Gatway") })
-    @RequestMapping(value = "/blogcategory",
+    @RequestMapping(value = "/blog",
         produces = { "applicantion/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<BlogCategory> _blogcategoryGet() {
-        return blogcategoryGet();
+    default ResponseEntity<Blog> _blogGet() {
+        return blogGet();
     }
 
     // Override this method
-    default  ResponseEntity<BlogCategory> blogcategoryGet() {
+    default  ResponseEntity<Blog> blogGet() {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf(""))) {
@@ -183,31 +183,31 @@ public interface BlogcategoryApi {
 
 
     /**
-     * POST /blogcategory : Adding a new Blog category
+     * POST /blog : Adding a new Blog
      *
-     * @param body Blog category details that needs to be added (required)
+     * @param body Blog details that needs to be added (required)
      * @return Successful (status code 201)
      *         or Bad request input (status code 400)
      *         or Data not found (status code 404)
      *         or Invalid input (status code 500)
      *         or Bad Gatway (status code 502)
      */
-    @ApiOperation(value = "Adding a new Blog category", nickname = "blogcategoryPost", notes = "", tags={ "Blog category", })
+    @ApiOperation(value = "Adding a new Blog", nickname = "blogPost", notes = "", tags={ "Blog", })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Successful"),
         @ApiResponse(code = 400, message = "Bad request input"),
         @ApiResponse(code = 404, message = "Data not found"),
         @ApiResponse(code = 500, message = "Invalid input"),
         @ApiResponse(code = 502, message = "Bad Gatway") })
-    @RequestMapping(value = "/blogcategory",
+    @RequestMapping(value = "/blog",
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<Void> _blogcategoryPost(@ApiParam(value = "Blog category details that needs to be added" ,required=true )  @Valid @RequestBody BlogCategory body) {
-        return blogcategoryPost(body);
+    default ResponseEntity<Void> _blogPost(@ApiParam(value = "Blog details that needs to be added" ,required=true )  @Valid @RequestBody Blog body) {
+        return blogPost(body);
     }
 
     // Override this method
-    default  ResponseEntity<Void> blogcategoryPost(BlogCategory body) {
+    default  ResponseEntity<Void> blogPost(Blog body) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

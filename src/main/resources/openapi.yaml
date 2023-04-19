@@ -49,7 +49,7 @@ paths:
         '502':
           description: Bad Gatway
       x-codegen-request-body-name: body  
-      
+     
     post:
       tags:
         - Blog category
@@ -76,9 +76,9 @@ paths:
           content: {}          
         '502':
           description: Bad Gatway
-          content: {}               
+          content: {}              
       x-codegen-request-body-name: body
-      
+     
   /blogcategory/{blogcategoryId}:
     get:
       tags:
@@ -111,7 +111,7 @@ paths:
         '502':
           description: Bad Gatway
       x-codegen-request-body-name: body  
-      
+     
     put:
       tags:
         - Blog category
@@ -123,7 +123,7 @@ paths:
           schema:
             type: integer
       requestBody:
-        description: Blog category details that needs to be added
+        description: Blog category details that needs to be update
         content:
           application/json:
             schema:
@@ -144,9 +144,9 @@ paths:
           content: {}          
         '502':
           description: Bad Gatway
-          content: {}               
+          content: {}              
       x-codegen-request-body-name: body
-      
+     
     delete:
       tags:
         - Blog category
@@ -172,7 +172,159 @@ paths:
           content: {}          
         '502':
           description: Bad Gatway
-          content: {}               
+          content: {}              
+      x-codegen-request-body-name: body
+  /blog:
+    get:
+      tags:
+        - Blog
+      summary: Getting blog details
+      responses:
+        '200':
+          description: A list of all blog details
+          content:
+            applicantion/json:
+              schema:
+                $ref: '#/components/schemas/Blog'
+        '201':
+          description: Successful
+          content: {}
+        '400':
+          description: Bad request input
+          content: {}
+        '404':
+          description: Data not found
+          content: {}
+        '500':
+          description: Invalid input
+          content: {}
+        '502':
+          description: Bad Gatway
+      x-codegen-request-body-name: body  
+     
+    post:
+      tags:
+        - Blog
+      summary: Adding a new Blog
+      requestBody:
+        description: Blog details that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Blog'
+        required: true
+      responses:
+        '201':
+          description: Successful
+          content: {}      
+        '400':
+          description: Bad request input
+          content: {}
+        '404':
+          description: Data not found
+          content: {}
+        '500':
+          description: Invalid input
+          content: {}          
+        '502':
+          description: Bad Gatway
+          content: {}              
+      x-codegen-request-body-name: body
+     
+  /blog/{blogId}:
+    get:
+      tags:
+        - Blog
+      parameters:
+      - name: blogId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A list of all blog details
+          content:
+            applicantion/json:
+              schema:
+                $ref: '#/components/schemas/Blog'
+        '201':
+          description: Successful
+          content: {}
+        '400':
+          description: Bad request input
+          content: {}
+        '404':
+          description: Data not found
+          content: {}
+        '500':
+          description: Invalid input
+          content: {}
+        '502':
+          description: Bad Gatway
+      x-codegen-request-body-name: body  
+     
+    put:
+      tags:
+        - Blog
+      summary: Updating an existing Blog
+      parameters:
+        - name: blogId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Blog details that needs to be update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Blog'
+        required: true
+      responses:
+        '201':
+          description: Successful
+          content: {}      
+        '400':
+          description: Bad request input
+          content: {}
+        '404':
+          description: Data not found
+          content: {}
+        '500':
+          description: Invalid input
+          content: {}          
+        '502':
+          description: Bad Gatway
+          content: {}              
+      x-codegen-request-body-name: body
+     
+    delete:
+      tags:
+        - Blog
+      summary: Delete a Blog
+      parameters:
+        - name: blogId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          description: Successful
+          content: {}      
+        '400':
+          description: Bad request input
+          content: {}
+        '404':
+          description: Data not found
+          content: {}
+        '500':
+          description: Invalid input
+          content: {}          
+        '502':
+          description: Bad Gatway
+          content: {}              
       x-codegen-request-body-name: body
 components:
   schemas:
@@ -180,22 +332,22 @@ components:
       type: object
       required:
        - blogcategoryId
-       - BlogCategoryName
-       - SeoTitle
-       - SeoMetaDescription
+       - blogCategoryName
+       - seoTitle
+       - seoMetaDescription
       properties:
         blogcategoryId:
           type: integer
-        BlogCategoryName:
+        blogCategoryName:
           type: string
           maxLength: 120
-        SeoTitle:
+        seoTitle:
           type: string
           maxLength: 200
-        SeoMetaDescription:
+        seoMetaDescription:
           type: string
           maxLength: 200
-        Status:
+        status:
           type: string
           maxLength: 6
         categoryImage:
@@ -208,8 +360,53 @@ components:
       properties:
         blogCategoryImageId:
           type: integer
-        categoryImage:
+        categoryImageName:
           type : string
         categoryImageDownloadUrl:
           type : string
-          
+    Blog:
+      type: object
+      required:
+       - blogId
+      properties:
+        blogId:
+          type: integer
+        authorName:
+          type: string
+          maxLength: 120
+        blogTitle:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 400
+        seoTitle:
+          type: string
+          maxLength: 80
+        seoMetaDescription:
+          type: string
+          maxLength: 200
+        status:
+          type: string
+        blogSubImage:
+          $ref: '#/components/schemas/BlogSubImage'
+        blogBannerImage:
+          $ref: '#/components/schemas/BlogBannerImage'
+        
+    BlogImages:
+      type: object
+      required:
+       - blogImageId
+      properties:
+        blogImageId:
+          type: integer
+        blogImageName:
+          type: string
+        imageDownloadUrl:
+          type: string
+        imageType:
+          type: string
+    BlogSubImage:
+      $ref: '#/components/schemas/BlogImages'
+    BlogBannerImage:
+      $ref: '#/components/schemas/BlogImages'

@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -20,16 +21,13 @@ public class BlogCategoryImageData {
 	@Column(name = "blog_category_images_id")
 	private int blogImagesId;
 
-	@Column(name = "category_image")
-	private byte[] categoryImage;
-
 	@Column(name = "category_image_name")
 	private String categoryImageName;
 
 	@Column(name = "category_image_url")
 	private String categoryImageUrl;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "blog_category_id")
 	private BlogCategoryData blogCategoryData;
 
@@ -47,14 +45,6 @@ public class BlogCategoryImageData {
 
 	public void setBlogImagesId(int blogImagesId) {
 		this.blogImagesId = blogImagesId;
-	}
-
-	public byte[] getCategoryImage() {
-		return categoryImage;
-	}
-
-	public void setCategoryImage(byte[] categoryImage) {
-		this.categoryImage = categoryImage;
 	}
 
 	public String getCategoryImageUrl() {

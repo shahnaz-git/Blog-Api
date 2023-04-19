@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.ecom.blogApi.api.model.Blog;
 import com.ecom.blogApi.api.model.BlogCategory;
 import com.ecom.blogApi.api.model.BlogCategoryImage;
 
@@ -40,6 +41,23 @@ public class ResponseHandler {
 			map.put("message", message);
 			map.put("status", status.value());
 			map.put("blogCategoryImageId", null);
+			return new ResponseEntity<Object>(map, status);
+		}
+		
+	}
+	
+	public static ResponseEntity<Object> generateResponseForBlog(String message, HttpStatus status, Object responseObj) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if (responseObj != null && (responseObj instanceof Blog)) {
+			map.put("message", message);
+			map.put("status", status.value());
+			map.put("blogId", ((Blog) responseObj).getBlogId());
+			return new ResponseEntity<Object>(map, status);
+		}else {
+			map.put("message", message);
+			map.put("status", status.value());
+			map.put("blogId", null);
 			return new ResponseEntity<Object>(map, status);
 		}
 		

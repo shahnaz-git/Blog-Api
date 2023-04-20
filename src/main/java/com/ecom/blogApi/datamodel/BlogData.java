@@ -20,7 +20,7 @@ public class BlogData {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "blog_id")
 	private Integer blogId;
-	
+
 	@Column(name = "blog_category_id")
 	private Integer blogCategoryId;
 
@@ -32,8 +32,8 @@ public class BlogData {
 
 	@Column(name = "descriptions")
 	private String description;
-	
-	@Column(name="seo_title")
+
+	@Column(name = "seo_title")
 	private String seoTitle;
 
 	@Column(name = "seo_meta_desc")
@@ -44,7 +44,7 @@ public class BlogData {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "blogData", cascade = CascadeType.ALL)
 	private List<BlogImageData> blogImageData;
-	
+
 	public List<BlogImageData> getBlogImageData() {
 		return blogImageData;
 	}
@@ -116,5 +116,5 @@ public class BlogData {
 	public void setSeoTitle(String seoTitle) {
 		this.seoTitle = seoTitle;
 	}
-	
+
 }

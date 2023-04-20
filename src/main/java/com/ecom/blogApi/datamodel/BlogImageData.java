@@ -12,7 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name ="blog_images")
+@Table(name = "blog_images")
 public class BlogImageData {
 
 	@Id
@@ -72,5 +72,5 @@ public class BlogImageData {
 	public void setImgType(String imgType) {
 		this.imgType = imgType;
 	}
-	
+
 }

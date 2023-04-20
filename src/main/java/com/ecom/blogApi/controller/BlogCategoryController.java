@@ -22,102 +22,103 @@ import com.ecom.blogApi.api.model.BlogCategory;
 import com.ecom.blogApi.service.BlogCategoryService;
 
 @RestController
-@RequestMapping("/blog")
+@RequestMapping("/api/v1")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class BlogCategoryController {
-   
+
 	@Autowired
 	BlogCategoryService blogCategoryService;
-	
-	@PostMapping(value="/blogcategoryvalue")
-	ResponseEntity<Object> postBlogCategory (@RequestParam("categoryName") String categoryName ,@RequestParam("seoTitle") String seoTitle ,@RequestParam("seoMetaDesc") String seoMeta,@RequestParam("imgData") MultipartFile imgData){
+
+	@PostMapping(value = "/addcategory")
+	ResponseEntity<Object> postBlogCategory(@RequestParam("categoryName") String categoryName,
+			@RequestParam("seoTitle") String seoTitle, @RequestParam("status") String status,
+			@RequestParam("seoMetaDesc") String seoMeta, @RequestParam("imgData") MultipartFile imgData) {
 		try {
-		
-			BlogCategory blgCategory = blogCategoryService.createBlogCategory(categoryName , seoTitle , seoMeta ,imgData);
-			
-			return  ResponseHandler.generateResponseBlogCategory("Sucessfully added data",HttpStatus.CREATED,blgCategory);
-			
-		}catch(Exception a) {
-			return  ResponseHandler.generateResponseBlogCategory(a.getMessage(),HttpStatus.MULTI_STATUS,null);
+
+			BlogCategory blgCategory = blogCategoryService.createBlogCategory(categoryName, seoTitle, seoMeta, status,
+					imgData);
+
+			return ResponseHandler.generateResponseBlogCategory("Sucessfully added data", HttpStatus.CREATED,
+					blgCategory);
+
+		} catch (Exception a) {
+			return ResponseHandler.generateResponseBlogCategory(a.getMessage(), HttpStatus.MULTI_STATUS, null);
 		}
-		
-		
+
 	}
-	
+
 	@CrossOrigin
-	@RequestMapping(value="/blogcategory" , method = RequestMethod.GET)
-	ResponseEntity<Object> getAllBlogCategory (){
+	@RequestMapping(value = "/getallcategory", method = RequestMethod.GET)
+	ResponseEntity<Object> getAllBlogCategory() {
 		try {
 			List<BlogCategory> blogCategory = blogCategoryService.getAllBlogCategory();
-			return new ResponseEntity<>(blogCategory ,HttpStatus.OK);
-			
-		}catch(Exception ex) {
+			return new ResponseEntity<>(blogCategory, HttpStatus.OK);
+
+		} catch (Exception ex) {
 			return ResponseHandler.generateResponseBlogCategory(ex.getMessage(), HttpStatus.NOT_FOUND, null);
 		}
-		
-		
-	}
-	
 
-	@GetMapping(value="/blogcategorybyid/{blogcategoryId}")
-	ResponseEntity<Object> getBlogCategorybyId(@PathVariable int blogcategoryId){
-		try {
-			
-			BlogCategory blogCat = blogCategoryService.getSingleBlogCategory(blogcategoryId);
-			
-			return new ResponseEntity<>(blogCat ,HttpStatus.OK);
-		}catch(Exception e) {
-			return ResponseHandler.generateResponseBlogCategory(e.getMessage(),HttpStatus.NOT_FOUND, null);
-		}
-		
 	}
-	
-	@PutMapping(value = "/updateblogcategory/{blogcategoryid}" , consumes = "application/json" , produces = "application/json" )
-	ResponseEntity<Object> putBlogCategory(@PathVariable("blogcategoryid") int id,@RequestBody BlogCategory blogCategoryBody){
+
+	@GetMapping(value = "/getcategorybyid/{blogcategoryId}")
+	ResponseEntity<Object> getBlogCategorybyId(@PathVariable int blogcategoryId) {
+		try {
+
+			BlogCategory blogCat = blogCategoryService.getSingleBlogCategory(blogcategoryId);
+
+			return new ResponseEntity<>(blogCat, HttpStatus.OK);
+		} catch (Exception e) {
+			return ResponseHandler.generateResponseBlogCategory(e.getMessage(), HttpStatus.NOT_FOUND, null);
+		}
+
+	}
+
+	@PutMapping(value = "/updateblogcategory/{blogcategoryid}", consumes = "application/json", produces = "application/json")
+	ResponseEntity<Object> putBlogCategory(@PathVariable("blogcategoryid") int id,
+			@RequestBody BlogCategory blogCategoryBody) {
 		BlogCategory blogCategory = null;
 		try {
-			
+
 			blogCategory = blogCategoryService.updateBlogCategory(id, blogCategoryBody);
 			return ResponseHandler.generateResponseBlogCategory("Data is Updated ", HttpStatus.OK, blogCategory);
-		}
-		catch(Exception ex) {
-			return ResponseHandler.generateResponseBlogCategory(ex.getMessage(),HttpStatus.MULTI_STATUS, null);
+		} catch (Exception ex) {
+			return ResponseHandler.generateResponseBlogCategory(ex.getMessage(), HttpStatus.MULTI_STATUS, null);
 		}
 	}
-	
-	@PutMapping(value = "/updateimg/{blogcategoryid}")
-	ResponseEntity<Object> putBlogCategoryImage(@PathVariable("blogcategoryid") int id,@RequestParam("categoryName") String categoryName ,@RequestParam("seoTitle") String seoTitle , @RequestParam("seoMetaDesc") String seoMetaDesc,@RequestParam("status") String status,@RequestParam("cateImg") MultipartFile categoryImg ){
+
+	@PutMapping(value = "/updatecategory/{blogcategoryid}")
+	ResponseEntity<Object> putBlogCategoryImage(@PathVariable("blogcategoryid") int id,
+			@RequestParam("categoryName") String categoryName, @RequestParam("seoTitle") String seoTitle,
+			@RequestParam("seoMetaDesc") String seoMetaDesc, @RequestParam("status") String status,
+			@RequestParam("imgData") MultipartFile categoryImg) {
 		BlogCategory blgCategory = null;
 		try {
-			
-			blgCategory = blogCategoryService.updateCategoryImage(id,categoryName,seoTitle, seoMetaDesc ,status, categoryImg );
+
+			blgCategory = blogCategoryService.updateCategoryImage(id, categoryName, seoTitle, seoMetaDesc, status,
+					categoryImg);
 			return ResponseHandler.generateResponseBlogCategory("Data is Updated...!", HttpStatus.OK, blgCategory);
-		}
-		catch(Exception ex) {
-			return ResponseHandler.generateResponseBlogCategory(ex.getMessage(),HttpStatus.MULTI_STATUS, null);
+		} catch (Exception ex) {
+			return ResponseHandler.generateResponseBlogCategory(ex.getMessage(), HttpStatus.MULTI_STATUS, null);
 		}
 	}
-	
-	@DeleteMapping(value="/deleteblogcategory/{blogcategoryid}")
-	ResponseEntity<Object> deleteBlogCategory(@PathVariable("blogcategoryid") int id){
-		
+
+	@DeleteMapping(value = "/deleteblogcategory/{blogcategoryid}")
+	ResponseEntity<Object> deleteBlogCategory(@PathVariable("blogcategoryid") int id) {
+
 		BlogCategory deleteBlgCategory;
 		try {
-			
+
 			deleteBlgCategory = blogCategoryService.deleteBlogCategory(id);
-			
-			return ResponseHandler.generateResponseBlogCategory("Successfully deleted data!", HttpStatus.OK, deleteBlgCategory);
-			
-		}catch(Exception e){
-			
+
+			return ResponseHandler.generateResponseBlogCategory("Successfully deleted data!", HttpStatus.OK,
+					deleteBlgCategory);
+
+		} catch (Exception e) {
+
 			return ResponseHandler.generateResponseBlogCategory(e.getMessage(), HttpStatus.MULTI_STATUS, null);
-			
+
 		}
-		
-		
-		
-		
+
 	}
-	
-	
+
 }

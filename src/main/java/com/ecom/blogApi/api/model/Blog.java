@@ -13,11 +13,14 @@ import javax.validation.constraints.*;
 /**
  * Blog
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-20T13:00:02.546203700+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-04-24T12:41:46.865126300+05:30[Asia/Calcutta]")
 
 public class Blog   {
   @JsonProperty("blogId")
   private Integer blogId;
+
+  @JsonProperty("blogCategoryId")
+  private Integer blogCategoryId;
 
   @JsonProperty("authorName")
   private String authorName;
@@ -40,8 +43,11 @@ public class Blog   {
   @JsonProperty("blogSubImage")
   private BlogImages blogSubImage;
 
-  @JsonProperty("blogBannerImage")
-  private BlogImages blogBannerImage;
+  @JsonProperty("blogBanner")
+  private BlogImages blogBanner;
+
+  @JsonProperty("blogMobileBanner")
+  private BlogImages blogMobileBanner;
 
   public Blog blogId(Integer blogId) {
     this.blogId = blogId;
@@ -62,6 +68,26 @@ public class Blog   {
 
   public void setBlogId(Integer blogId) {
     this.blogId = blogId;
+  }
+
+  public Blog blogCategoryId(Integer blogCategoryId) {
+    this.blogCategoryId = blogCategoryId;
+    return this;
+  }
+
+  /**
+   * Get blogCategoryId
+   * @return blogCategoryId
+  */
+  @ApiModelProperty(value = "")
+
+
+  public Integer getBlogCategoryId() {
+    return blogCategoryId;
+  }
+
+  public void setBlogCategoryId(Integer blogCategoryId) {
+    this.blogCategoryId = blogCategoryId;
   }
 
   public Blog authorName(String authorName) {
@@ -115,7 +141,7 @@ public class Blog   {
   */
   @ApiModelProperty(value = "")
 
-@Size(max=400) 
+
   public String getDescription() {
     return description;
   }
@@ -205,25 +231,46 @@ public class Blog   {
     this.blogSubImage = blogSubImage;
   }
 
-  public Blog blogBannerImage(BlogImages blogBannerImage) {
-    this.blogBannerImage = blogBannerImage;
+  public Blog blogBanner(BlogImages blogBanner) {
+    this.blogBanner = blogBanner;
     return this;
   }
 
   /**
-   * Get blogBannerImage
-   * @return blogBannerImage
+   * Get blogBanner
+   * @return blogBanner
   */
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public BlogImages getBlogBannerImage() {
-    return blogBannerImage;
+  public BlogImages getBlogBanner() {
+    return blogBanner;
   }
 
-  public void setBlogBannerImage(BlogImages blogBannerImage) {
-    this.blogBannerImage = blogBannerImage;
+  public void setBlogBanner(BlogImages blogBanner) {
+    this.blogBanner = blogBanner;
+  }
+
+  public Blog blogMobileBanner(BlogImages blogMobileBanner) {
+    this.blogMobileBanner = blogMobileBanner;
+    return this;
+  }
+
+  /**
+   * Get blogMobileBanner
+   * @return blogMobileBanner
+  */
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public BlogImages getBlogMobileBanner() {
+    return blogMobileBanner;
+  }
+
+  public void setBlogMobileBanner(BlogImages blogMobileBanner) {
+    this.blogMobileBanner = blogMobileBanner;
   }
 
 
@@ -237,6 +284,7 @@ public class Blog   {
     }
     Blog blog = (Blog) o;
     return Objects.equals(this.blogId, blog.blogId) &&
+        Objects.equals(this.blogCategoryId, blog.blogCategoryId) &&
         Objects.equals(this.authorName, blog.authorName) &&
         Objects.equals(this.blogTitle, blog.blogTitle) &&
         Objects.equals(this.description, blog.description) &&
@@ -244,12 +292,13 @@ public class Blog   {
         Objects.equals(this.seoMetaDescription, blog.seoMetaDescription) &&
         Objects.equals(this.status, blog.status) &&
         Objects.equals(this.blogSubImage, blog.blogSubImage) &&
-        Objects.equals(this.blogBannerImage, blog.blogBannerImage);
+        Objects.equals(this.blogBanner, blog.blogBanner) &&
+        Objects.equals(this.blogMobileBanner, blog.blogMobileBanner);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(blogId, authorName, blogTitle, description, seoTitle, seoMetaDescription, status, blogSubImage, blogBannerImage);
+    return Objects.hash(blogId, blogCategoryId, authorName, blogTitle, description, seoTitle, seoMetaDescription, status, blogSubImage, blogBanner, blogMobileBanner);
   }
 
   @Override
@@ -258,6 +307,7 @@ public class Blog   {
     sb.append("class Blog {\n");
     
     sb.append("    blogId: ").append(toIndentedString(blogId)).append("\n");
+    sb.append("    blogCategoryId: ").append(toIndentedString(blogCategoryId)).append("\n");
     sb.append("    authorName: ").append(toIndentedString(authorName)).append("\n");
     sb.append("    blogTitle: ").append(toIndentedString(blogTitle)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -265,7 +315,8 @@ public class Blog   {
     sb.append("    seoMetaDescription: ").append(toIndentedString(seoMetaDescription)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    blogSubImage: ").append(toIndentedString(blogSubImage)).append("\n");
-    sb.append("    blogBannerImage: ").append(toIndentedString(blogBannerImage)).append("\n");
+    sb.append("    blogBanner: ").append(toIndentedString(blogBanner)).append("\n");
+    sb.append("    blogMobileBanner: ").append(toIndentedString(blogMobileBanner)).append("\n");
     sb.append("}");
     return sb.toString();
   }

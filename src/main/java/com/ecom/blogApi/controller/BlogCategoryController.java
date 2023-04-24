@@ -29,7 +29,7 @@ public class BlogCategoryController {
 	@Autowired
 	BlogCategoryService blogCategoryService;
 
-	@PostMapping(value = "/addcategory")
+	@PostMapping(value = "/blogcategory")
 	ResponseEntity<Object> postBlogCategory(@RequestParam("categoryName") String categoryName,
 			@RequestParam("seoTitle") String seoTitle, @RequestParam("status") String status,
 			@RequestParam("seoMetaDesc") String seoMeta, @RequestParam("imgData") MultipartFile imgData) {
@@ -38,8 +38,9 @@ public class BlogCategoryController {
 			BlogCategory blgCategory = blogCategoryService.createBlogCategory(categoryName, seoTitle, seoMeta, status,
 					imgData);
 
-			return ResponseHandler.generateResponseBlogCategory("Sucessfully added data", HttpStatus.CREATED,
-					blgCategory);
+//			return ResponseHandler.generateResponseBlogCategory("Sucessfully added data", HttpStatus.CREATED,
+//					blgCategory);
+			return new ResponseEntity<>(blgCategory, HttpStatus.CREATED);
 
 		} catch (Exception a) {
 			return ResponseHandler.generateResponseBlogCategory(a.getMessage(), HttpStatus.MULTI_STATUS, null);
@@ -48,7 +49,7 @@ public class BlogCategoryController {
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/getallcategory", method = RequestMethod.GET)
+	@RequestMapping(value = "/blogcategory", method = RequestMethod.GET)
 	ResponseEntity<Object> getAllBlogCategory() {
 		try {
 			List<BlogCategory> blogCategory = blogCategoryService.getAllBlogCategory();
@@ -60,7 +61,7 @@ public class BlogCategoryController {
 
 	}
 
-	@GetMapping(value = "/getcategorybyid/{blogcategoryId}")
+	@GetMapping(value = "/blogcategory/{blogcategoryId}")
 	ResponseEntity<Object> getBlogCategorybyId(@PathVariable int blogcategoryId) {
 		try {
 
@@ -73,20 +74,20 @@ public class BlogCategoryController {
 
 	}
 
-	@PutMapping(value = "/updateblogcategory/{blogcategoryid}", consumes = "application/json", produces = "application/json")
-	ResponseEntity<Object> putBlogCategory(@PathVariable("blogcategoryid") int id,
-			@RequestBody BlogCategory blogCategoryBody) {
-		BlogCategory blogCategory = null;
-		try {
+//	@PutMapping(value = "/updateblogcategory/{blogcategoryid}", consumes = "application/json", produces = "application/json")
+//	ResponseEntity<Object> putBlogCategory(@PathVariable("blogcategoryid") int id,
+//			@RequestBody BlogCategory blogCategoryBody) {
+//		BlogCategory blogCategory = null;
+//		try {
+//
+//			blogCategory = blogCategoryService.updateBlogCategory(id, blogCategoryBody);
+//			return ResponseHandler.generateResponseBlogCategory("Data is Updated ", HttpStatus.OK, blogCategory);
+//		} catch (Exception ex) {
+//			return ResponseHandler.generateResponseBlogCategory(ex.getMessage(), HttpStatus.MULTI_STATUS, null);
+//		}
+//	}
 
-			blogCategory = blogCategoryService.updateBlogCategory(id, blogCategoryBody);
-			return ResponseHandler.generateResponseBlogCategory("Data is Updated ", HttpStatus.OK, blogCategory);
-		} catch (Exception ex) {
-			return ResponseHandler.generateResponseBlogCategory(ex.getMessage(), HttpStatus.MULTI_STATUS, null);
-		}
-	}
-
-	@PutMapping(value = "/updatecategory/{blogcategoryid}")
+	@PutMapping(value = "/blogcategory/{blogcategoryid}")
 	ResponseEntity<Object> putBlogCategoryImage(@PathVariable("blogcategoryid") int id,
 			@RequestParam("categoryName") String categoryName, @RequestParam("seoTitle") String seoTitle,
 			@RequestParam("seoMetaDesc") String seoMetaDesc, @RequestParam("status") String status,
@@ -96,13 +97,15 @@ public class BlogCategoryController {
 
 			blgCategory = blogCategoryService.updateCategoryImage(id, categoryName, seoTitle, seoMetaDesc, status,
 					categoryImg);
-			return ResponseHandler.generateResponseBlogCategory("Data is Updated...!", HttpStatus.OK, blgCategory);
+//			return ResponseHandler.generateResponseBlogCategory("Data is Updated...!", HttpStatus.OK, blgCategory);
+
+			return new ResponseEntity<>(blgCategory, HttpStatus.OK);
 		} catch (Exception ex) {
 			return ResponseHandler.generateResponseBlogCategory(ex.getMessage(), HttpStatus.MULTI_STATUS, null);
 		}
 	}
 
-	@DeleteMapping(value = "/deleteblogcategory/{blogcategoryid}")
+	@DeleteMapping(value = "/blogcategory/{blogcategoryid}")
 	ResponseEntity<Object> deleteBlogCategory(@PathVariable("blogcategoryid") int id) {
 
 		BlogCategory deleteBlgCategory;

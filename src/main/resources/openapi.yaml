@@ -355,7 +355,7 @@ components:
     BlogCategoryImage:
       type: object
       required:
-       - categoryImage
+       - categoryImageName
        - categoryImageDownloadUrl
       properties:
         blogCategoryImageId:
@@ -371,6 +371,8 @@ components:
       properties:
         blogId:
           type: integer
+        blogCategoryId:
+          type: integer
         authorName:
           type: string
           maxLength: 120
@@ -379,7 +381,6 @@ components:
           maxLength: 200
         description:
           type: string
-          maxLength: 400
         seoTitle:
           type: string
           maxLength: 80
@@ -390,9 +391,10 @@ components:
           type: string
         blogSubImage:
           $ref: '#/components/schemas/BlogSubImage'
-        blogBannerImage:
+        blogBanner:
           $ref: '#/components/schemas/BlogBannerImage'
-        
+        blogMobileBanner:
+          $ref: '#/components/schemas/BlogMobileBanner'
     BlogImages:
       type: object
       required:
@@ -409,4 +411,6 @@ components:
     BlogSubImage:
       $ref: '#/components/schemas/BlogImages'
     BlogBannerImage:
+      $ref: '#/components/schemas/BlogImages'
+    BlogMobileBanner:
       $ref: '#/components/schemas/BlogImages'
